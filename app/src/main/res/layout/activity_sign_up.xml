@@ -1,0 +1,79 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                tools:context="com.example.haylin2002.parselocaldatabase.LogIn"
+	>
+
+
+	<EditText
+		android:id="@+id/email"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentTop="true"
+		android:layout_centerHorizontal="true"
+		android:ems="10"
+		android:hint="@string/signup_email"
+		android:inputType="textEmailAddress"/>
+
+	<EditText
+		android:id="@+id/password2"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignLeft="@+id/password"
+		android:layout_alignStart="@+id/password"
+		android:layout_below="@+id/password"
+		android:ems="10"
+		android:hint="@string/signup_password2"
+		android:inputType="textPassword"/>
+
+	<EditText
+		android:id="@+id/password"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignStart="@+id/email"
+		android:layout_below="@+id/email"
+		android:ems="10"
+		android:hint="@string/signup_password"
+		android:inputType="textPassword"/>
+
+	<Button
+		android:id="@+id/signUp"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentEnd="true"
+		android:layout_alignParentRight="true"
+		android:layout_centerVertical="true"
+		android:background="@color/primary"
+		android:onClick="register"
+		android:text="@string/signup"
+		android:textColor="@android:color/white"/>
+
+	<RadioButton
+		android:id="@+id/radiobutton_female"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignLeft="@+id/password2"
+		android:layout_alignStart="@+id/password2"
+		android:layout_below="@+id/password2"
+		android:onClick="onRadioButtonClicked"
+		android:text="@string/gender_female"/>
+
+	<RadioButton
+		android:id="@+id/radiobutton_male"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignEnd="@+id/password2"
+		android:layout_alignRight="@+id/password2"
+		android:layout_below="@+id/password2"
+		android:layout_marginEnd="28dp"
+		android:layout_marginRight="28dp"
+		android:onClick="onRadioButtonClicked"
+		android:text="@string/gender_male"/>
+
+
+</RelativeLayout>

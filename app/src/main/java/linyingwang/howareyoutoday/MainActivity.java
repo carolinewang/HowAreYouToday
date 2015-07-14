@@ -1,9 +1,12 @@
 package linyingwang.howareyoutoday;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.parse.ParseUser;
 
 
 public class MainActivity extends Activity {
@@ -35,5 +38,20 @@ public class MainActivity extends Activity {
 		}
 
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		ParseUser currentUser = ParseUser.getCurrentUser();
+
+		if (currentUser != null) {
+
+		} else {
+			// show the signup or login screen
+			Intent i = new Intent(this, Welcome.class);
+			startActivity(i);
+		}
+
 	}
 }

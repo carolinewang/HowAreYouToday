@@ -4,5 +4,64 @@
 	<string name="app_name">HowAreYouToday</string>
 	<string name="hello_world">Hello world!</string>
 	<string name="action_settings">Settings</string>
+	<string name="new_moment_hint">Write down, capture, record and treasure a moment of your love story.</string>
+	<string name="new_moment_hint_location">Add location: </string>
+	<string name="title_activity_love_story">Love Story</string>
+	<string name="title_activity_new_love_story">Add a Moment</string>
+	<string name="title_activity_web_view">WebView</string>
+	<string name="title_activity_log_in">LogIn</string>
+	<string name="title_activity_welcome">Welcome</string>
+	<string name="title_activity_sort">Sort</string>
+	<string name="title_activity_main">How Are You Today?</string>
+	<string name="button_signup">Sign Up</string>
+	<string name="button_login">Log In</string>
+	<string name="button_logOut">Log Out</string>
+	<string name="signup">Sign Up</string>
+	<string name="signup_password">Password:</string>
+	<string name="signup_password2">Re-enter password:</string>
+	<string name="signup_email">Email:</string>
+	<string name="submit">Submit</string>
+	<string name="forget_password">Forget your password?</string>
+	<string name="title_activity_forget_password">Reset Password</string>
+    <string name="reset_password">Please enter your email address, and an email will be sent to
+    allow you to reset your password.</string>
+	<string name="match">Match with your partner\'s account to create and edit your Love Story together!</string>
+	<string name="match_hint">Your partner\'s username:</string>
+	<string name="match_skip">Skip for now</string>
+	<string name="title_activity_match_with_parther">Match With Partner</string>
+	<string name="action_write">New</string>
+	<string name="action_search">Search</string>
 
+	<string name="title_activity_edit">Edit</string>
+	<string name="title_activity_my_account">My Account</string>
+	<string name="my_username">Username: </string>
+	<string name="partner">Partner: </string>
+	<string name="partner_notmatch">Haven\'t matched with my partner yet.</string>
+	<string name="my_email">Email: </string>
+	<string name="gender_female">Female </string>
+	<string name="gender_male">Male </string>
+	<string name="title_activity_moment_detail">Moment</string>
+	<string name="delete_alertMsg">Think twice before you delete your precious love moment! </string>
+	<string name="delete_alertTtl">Delete the moment? </string>
+	<string name="delete_confirm">Delete</string>
+	<string name="delete_cancel">Cancel</string>
+	<string name="toast_done">Moment Added!</string>
+	<string name="toast_imgSaved">Image saved to:</string>
+	<string name="toast_userCancel">User Cancelled</string>
+	<string name="toast_captureFail">Capture Failed</string>
+	<string name="toast_signup">Successfully signed up!</string>
+	<string name="toast_password">Passwords don\'t match!</string>
+	<string name="toast_login">Successfully logged in</string>
+	<string name="toast_match">Successfully matched with user: </string>
+	<string name="toast_match2">You both need to match with each other to confirm.</string>
+	<string name="toast_matchLater">You can go to "My Account" to match with your partner later.</string>
+	<string name="toast_forgetPw">Email sent!</string>
+	<string name="toast_delete">Moment successfully deleted.</string>
+	<string name="toast_matchAlready">You have already matched with: </string>
+	<string name="toast_logout">Successfully logged out.</string>
+
+    <string name="credits">Designed and Developed by Linying Wang
+        \nhttp://linyingwang.wordpress.com
+        \nCopyright 2015 All Rights Reserved.
+    </string>
 </resources>
