@@ -20,23 +20,6 @@ public class SignUp extends Activity {
 		setContentView(R.layout.activity_sign_up);
 	}
 
-	public void onRadioButtonClicked(View view) {
-		// Is the button now checked?
-		boolean checked = ((RadioButton) view).isChecked();
-
-		// Check which radio button was clicked
-		switch (view.getId()) {
-			case R.id.radiobutton_female:
-				if (checked)
-					gender = "female";
-				break;
-			case R.id.radiobutton_male:
-				if (checked)
-					gender = "male";
-				break;
-		}
-	}
-
 	public void register(View v) {
 //        EditText editText = (EditText) findViewById(R.id.name);
 //        final String username = editText.getText().toString();
