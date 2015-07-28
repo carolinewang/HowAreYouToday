@@ -16,7 +16,7 @@
 		android:layout_height="wrap_content"
 		android:layout_centerHorizontal="true"
 		android:ems="10"
-		android:hint="@string/signup_email"
+		android:hint="@string/signup_username"
 		android:inputType="textPersonName"
 		android:paddingTop="10dp"/>
 

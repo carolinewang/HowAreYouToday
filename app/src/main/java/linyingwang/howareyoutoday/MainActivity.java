@@ -1,15 +1,15 @@
 package linyingwang.howareyoutoday;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.parse.ParseUser;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends ActionBarActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +32,15 @@ public class MainActivity extends Activity {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 
-		//noinspection SimplifiableIfStatement
-		if (id == R.id.action_settings) {
+		if (id == R.id.action_new) {
+			Intent intent = new Intent(this, NewMood.class);
+			startActivity(intent);
+			return true;
+		}
+
+		if (id == R.id.action_profile) {
+			Intent i = new Intent(this, MyAccount.class);
+			startActivity(i);
 			return true;
 		}
 

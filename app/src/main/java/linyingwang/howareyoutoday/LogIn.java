@@ -1,8 +1,8 @@
 package linyingwang.howareyoutoday;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.parse.LogInCallback;
 import com.parse.ParseUser;
 
-public class LogIn extends Activity {
+public class LogIn extends ActionBarActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

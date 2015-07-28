@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<color name="primary">#E91E63</color>
-	<color name="primary_dark">#C2185B</color>
-	<color name="accent">#00BCD4</color>
+    <color name="primary">#FFC107</color>
+    <color name="primary_dark">#FFA000</color>
+    <color name="accent">#8BC34A</color>
+    <color name="good">#F5A623</color>
+    <color name="sad">#23B7FA</color>
+    <color name="angry">#DC0A70</color>
+    <color name="crying">#8E66FF</color>
+
 </resources>

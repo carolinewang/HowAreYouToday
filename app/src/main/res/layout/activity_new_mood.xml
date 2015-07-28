@@ -1,0 +1,80 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:paddingBottom="@dimen/activity_vertical_margin"
+              android:paddingLeft="@dimen/activity_horizontal_margin"
+              android:paddingRight="@dimen/activity_horizontal_margin"
+              android:paddingTop="@dimen/activity_vertical_margin"
+              tools:context="linyingwang.howareyoutoday.NewMood">
+
+
+	<ImageButton
+		android:id="@+id/happy"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"
+		android:background="@color/primary"
+		android:contentDescription="happy"
+		android:onClick="happy"
+		android:scaleType="fitCenter"
+		android:src="@drawable/happy"
+		/>
+
+	<ImageButton
+		android:id="@+id/good"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"
+		android:background="@color/good"
+		android:contentDescription="good"
+		android:onClick="good"
+		android:scaleType="fitCenter"
+		android:src="@drawable/good"/>
+
+	<ImageButton
+		android:id="@+id/ok"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"
+		android:background="@color/accent"
+		android:contentDescription="OK"
+		android:onClick="ok"
+		android:scaleType="fitCenter"
+		android:src="@drawable/ok"/>
+
+	<ImageButton
+		android:id="@+id/sad"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"
+		android:background="@color/sad"
+		android:contentDescription="sad"
+		android:onClick="sad"
+		android:scaleType="fitCenter"
+		android:src="@drawable/sad"/>
+
+	<ImageButton
+		android:id="@+id/angry"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"
+		android:background="@color/angry"
+		android:contentDescription="angry"
+		android:onClick="angry"
+		android:scaleType="fitCenter"
+		android:src="@drawable/angry"
+		/>
+
+	<ImageButton
+		android:id="@+id/crying"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"
+		android:background="@color/crying"
+		android:contentDescription="crying"
+		android:onClick="crying"
+		android:scaleType="fitCenter"
+		android:src="@drawable/cry"/>
+</LinearLayout>

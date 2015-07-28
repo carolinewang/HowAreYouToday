@@ -1,9 +1,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:tools="http://schemas.android.com/tools"
-	tools:context=".MainActivity">
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context="com.example.haylin2002.loveStory.LoveStory">
+
 	<item
-		android:id="@+id/action_settings"
-		android:orderInCategory="100"
-		android:showAsAction="never"
-		android:title="@string/action_settings" />
+		android:id="@+id/action_new"
+		android:icon="@drawable/ic_action_new"
+		android:orderInCategory="1"
+		android:title="New"
+		app:showAsAction="always"/>
+	<item
+		android:id="@+id/action_profile"
+		android:icon="@drawable/profile_icon"
+		android:orderInCategory="2"
+		android:title="@string/title_activity_my_account"
+		app:showAsAction="ifRoom"/>
+
+
 </menu>

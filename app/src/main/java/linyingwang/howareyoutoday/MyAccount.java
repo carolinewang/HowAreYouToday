@@ -1,8 +1,8 @@
 package linyingwang.howareyoutoday;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.parse.ParseUser;
 
-public class MyAccount extends Activity {
+public class MyAccount extends ActionBarActivity {
 
 
 	@Override

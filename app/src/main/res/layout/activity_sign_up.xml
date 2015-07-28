@@ -11,11 +11,22 @@
 
 
 	<EditText
+		android:id="@+id/name"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/email"
+		android:layout_centerHorizontal="true"
+		android:ems="10"
+		android:hint="@string/signup_username"
+		android:inputType="textPersonName"
+		android:paddingTop="10dp"/>
+
+	<EditText
 		android:id="@+id/email"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_alignParentTop="true"
-		android:layout_centerHorizontal="true"
+		android:layout_alignLeft="@+id/name"
+		android:layout_alignStart="@+id/name"
 		android:ems="10"
 		android:hint="@string/signup_email"
 		android:inputType="textEmailAddress"/>
@@ -35,8 +46,9 @@
 		android:id="@+id/password"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_alignStart="@+id/email"
-		android:layout_below="@+id/email"
+		android:layout_alignLeft="@+id/name"
+		android:layout_alignStart="@+id/name"
+		android:layout_below="@+id/name"
 		android:ems="10"
 		android:hint="@string/signup_password"
 		android:inputType="textPassword"/>
