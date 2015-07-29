@@ -92,7 +92,7 @@
 		android:layout_alignParentEnd="true"
 		android:layout_alignParentRight="true"
 		android:layout_marginTop="33dp"
-		android:background="@color/accent"
+		android:background="@color/ok"
 		android:onClick="goToMatchPage"
 
 		android:text="@string/title_activity_match_with_parther"

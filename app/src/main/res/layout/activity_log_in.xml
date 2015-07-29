@@ -52,7 +52,7 @@
 		android:layout_centerHorizontal="true"
 		android:onClick="forgetPassword"
 		android:text="@string/forget_password"
-		android:textColor="@color/accent"/>
+		android:textColor="@color/ok"/>
 
 
 </RelativeLayout>

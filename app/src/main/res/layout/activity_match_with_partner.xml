@@ -51,6 +51,6 @@
 
 		android:onClick="skipMatching"
 		android:text="@string/match_skip"
-		android:textColor="@color/accent"/>
+		android:textColor="@color/ok"/>
 </RelativeLayout>
 

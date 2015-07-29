@@ -2,10 +2,14 @@
 <resources>
     <color name="primary">#FFC107</color>
     <color name="primary_dark">#FFA000</color>
+    <color name="ok">#8BC34A</color>
     <color name="accent">#8BC34A</color>
+    <!--<color name="accent">#DC0A70</color>-->
     <color name="good">#F5A623</color>
     <color name="sad">#23B7FA</color>
     <color name="angry">#DC0A70</color>
     <color name="crying">#8E66FF</color>
+    <color name="white">#FFFFFF</color>
+    <color name="hint">#80FFFFFF</color>
 
 </resources>

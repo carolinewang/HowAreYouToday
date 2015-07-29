@@ -16,6 +16,7 @@
 	<string name="button_signup">Sign Up</string>
 	<string name="button_login">Log In</string>
 	<string name="button_logOut">Log Out</string>
+	<string name="button_recordmood">Record my mood</string>
 	<string name="signup">Sign Up</string>
 	<string name="signup_username">Username:</string>
 	<string name="signup_password">Password:</string>
@@ -62,6 +63,18 @@
 	<string name="toast_logout">Successfully logged out.</string>
 	<string name="toast_signup_alert_gender">You must select gender!</string>
 	<string name="toast_signup_alert">Please fill out the information!</string>
+
+	<string name="mood_description_hint_sad">What made you feel sad?</string>
+	<string name="mood_description_hint_happy">What made you feel happy?</string>
+	<string name="mood_description_hint_good">What made you feel good?</string>
+	<string name="mood_description_hint_ok">What made you feel OK?</string>
+	<string name="mood_description_hint_crying">What made you feel crying?</string>
+	<string name="mood_description_hint_angry">What made you feel angry?</string>
+	<string name="tag_choose">Choose tags to specify your mood:</string>
+
+	<string name="choice_comfort">I want comfort.</string>
+	<string name="choice_alone">Leave me alone.</string>
+
 
     <string name="credits">Copyright 2015 Linyin Wang All Rights Reserved.
     </string>

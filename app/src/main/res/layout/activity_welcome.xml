@@ -38,7 +38,7 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_marginTop="20dp"
-		android:background="@color/accent"
+		android:background="@color/ok"
 		android:onClick="goToSignUpPage"
 		android:text="@string/signup"
 
