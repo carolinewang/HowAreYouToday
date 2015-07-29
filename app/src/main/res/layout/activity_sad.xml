@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:custom="http://schemas.android.com/apk/res-auto"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -57,6 +58,16 @@
         android:text="@string/button_recordmood"
         android:textColor="@color/sad"/>
 
+    <me.gujun.android.taggroup.TagGroup
+        android:id="@+id/tag_group"
+        style="@style/TagGroup.Large"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="10dp"
+        custom:atg_borderColor="@color/sad"
+        custom:atg_textColor="@color/sad"/>
+
     <RadioButton
         android:id="@+id/radioButton_alone"
         android:layout_width="wrap_content"
@@ -66,6 +77,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginBottom="16dp"
         android:text="@string/choice_alone"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/white"
         />
 
@@ -77,6 +89,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:text="@string/choice_comfort"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/white"/>
 
     <TextView

@@ -80,4 +80,14 @@
     </string>
 	<string name="title_activity_new_mood">NewMood</string>
 	<string name="title_activity_sad">sad</string>
+
+	<string-array
+		name="tags_sad">
+		<item>depressed</item>
+		<item>anxious</item>
+		<item>hopeless</item>
+		<item>pressured</item>
+		<item>frustrated</item>
+		<item>lonely</item>
+	</string-array>
 </resources>
