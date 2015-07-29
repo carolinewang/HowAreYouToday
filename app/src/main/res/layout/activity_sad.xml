@@ -66,7 +66,14 @@
         android:layout_below="@+id/textView2"
         android:layout_marginTop="10dp"
         custom:atg_borderColor="@color/sad"
-        custom:atg_textColor="@color/sad"/>
+        custom:atg_checkedBackgroundColor="@color/sad_tagSelected"
+        custom:atg_checkedBorderColor="@color/sad_tagSelected"
+        custom:atg_checkedTextColor="@color/white"
+        custom:atg_inputHint="add a tag"
+        custom:atg_isAppendMode="true"
+        custom:atg_pressedBackgroundColor="@color/sad_tagSelected"
+        custom:atg_textColor="@color/sad"
+        />
 
     <RadioButton
         android:id="@+id/radioButton_alone"
