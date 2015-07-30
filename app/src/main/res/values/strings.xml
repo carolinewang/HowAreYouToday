@@ -70,7 +70,7 @@
 	<string name="mood_description_hint_ok">What made you feel OK?</string>
 	<string name="mood_description_hint_crying">What made you feel crying?</string>
 	<string name="mood_description_hint_angry">What made you feel angry?</string>
-	<string name="tag_choose">Choose tags to specify your mood:</string>
+	<string name="tag_choose">Add tags to specify your mood:</string>
 	<string name="tag_add">add a tag</string>
 
 	<string name="choice_comfort">I want comfort.</string>
@@ -91,4 +91,5 @@
 		<item>frustrated</item>
 		<item>lonely</item>
 	</string-array>
+	<string name="title_activity_tag_editor">TagEditorActivity</string>
 </resources>

@@ -47,6 +47,16 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/white"/>
 
+    <TextView
+        android:id="@+id/tv_prompt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:text="Click here to add a tag"
+        android:textColor="@color/hint"/>
+
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
@@ -55,6 +65,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:background="@color/white"
+        android:onClick="RecordMood"
         android:text="@string/button_recordmood"
         android:textColor="@color/sad"/>
 
@@ -70,7 +81,7 @@
         custom:atg_checkedBorderColor="@color/sad_tagSelected"
         custom:atg_checkedTextColor="@color/white"
         custom:atg_inputHint="add a tag"
-        custom:atg_isAppendMode="true"
+        custom:atg_isAppendMode="false"
         custom:atg_pressedBackgroundColor="@color/sad_tagSelected"
         custom:atg_textColor="@color/sad"
         />
