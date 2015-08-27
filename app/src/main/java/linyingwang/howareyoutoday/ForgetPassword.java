@@ -8,7 +8,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.parse.ParseException;
-import com.parse.ParseUser;
 import com.parse.RequestPasswordResetCallback;
 
 public class ForgetPassword extends ActionBarActivity {
@@ -21,7 +20,7 @@ public class ForgetPassword extends ActionBarActivity {
 
 	public void resetPassword(View v) {
 		String email = ((EditText) findViewById(R.id.email)).getText().toString();
-		ParseUser.requestPasswordResetInBackground(email, new RequestPasswordResetCallback() {
+		User.requestPasswordResetInBackground(email, new RequestPasswordResetCallback() {
 			public void done(ParseException e) {
 				if (e == null) {
 					// An email was successfully sent with reset instructions.

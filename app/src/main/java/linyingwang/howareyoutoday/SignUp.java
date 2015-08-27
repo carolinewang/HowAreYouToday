@@ -8,7 +8,6 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
 public class SignUp extends ActionBarActivity {
@@ -47,11 +46,13 @@ public class SignUp extends ActionBarActivity {
 		if (!(password.equals(password2))) {
 			Toast.makeText(SignUp.this, R.string.toast_password, Toast.LENGTH_SHORT).show();
 		} else {
-			ParseUser user = new ParseUser();
+//			ParseUser user = new ParseUser();
+			User user = new User();
 			user.setUsername(username);
 			user.setPassword(password);
 			user.setEmail(email);
-			user.put("gender", gender);
+//			user.put("gender", gender);
+			user.setGender(gender);
 			user.signUpInBackground(new SignUpCallback() {
 				@Override
 				public void done(com.parse.ParseException e) {

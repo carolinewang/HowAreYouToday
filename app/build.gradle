@@ -24,6 +24,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:21.0.3'
     compile 'com.parse.bolts:bolts-android:1.+'
     compile files('libs/Parse-1.9.3.jar')
+    compile fileTree(dir: 'libs', include: 'Parse-*.jar')
     compile 'me.gujun.android.taggroup:library:1.4@aar'
     compile files('libs/demo.jar')
 }

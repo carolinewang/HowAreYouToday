@@ -1,7 +1,9 @@
 package linyingwang.howareyoutoday;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,18 +14,36 @@ import me.gujun.android.taggroup.TagGroup;
 public class TagEditorActivity extends ActionBarActivity {
 	public final static String TAGSEDITED = "Tags edited by user";
 	private TagGroup mTagGroup;
-	private String[] tags;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tag_editor);
 		Intent i = getIntent();
-		tags = i.getStringArrayExtra(Sad.TAGCONTENTS);
+		String[] tags = i.getStringArrayExtra(Application.TAGCONTENTS);
+		int moodCategory = i.getIntExtra(Application.MOOD_CATEGORY, 1);
 		mTagGroup = (TagGroup) findViewById(R.id.tag_group);
 
 		if (tags != null && tags.length > 0) {
 			mTagGroup.setTags(tags);
+		}
+		ActionBar bar = getSupportActionBar();
+		switch (moodCategory) {
+			case 2:
+				bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.good)));
+				break;
+			case 3:
+				bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.ok)));
+				break;
+			case 4:
+				bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.sad)));
+				break;
+			case 5:
+				bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.angry)));
+				break;
+			case 6:
+				bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.crying)));
+				break;
 		}
 	}
 

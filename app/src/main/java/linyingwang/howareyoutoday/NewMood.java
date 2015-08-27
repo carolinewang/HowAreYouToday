@@ -19,27 +19,27 @@ public class NewMood extends Activity {
 	}
 
 	public void happy(View v) {
-		Intent intent = new Intent(this, Sad.class);
+		Intent intent = new Intent(this, Happy.class);
 		startActivity(intent);
 	}
 
 	public void good(View v) {
-		Intent intent = new Intent(this, Sad.class);
+		Intent intent = new Intent(this, Good.class);
 		startActivity(intent);
 	}
 
 	public void ok(View v) {
-		Intent intent = new Intent(this, Sad.class);
+		Intent intent = new Intent(this, OK.class);
 		startActivity(intent);
 	}
 
 	public void crying(View v) {
-		Intent intent = new Intent(this, Sad.class);
+		Intent intent = new Intent(this, Crying.class);
 		startActivity(intent);
 	}
 
 	public void angry(View v) {
-		Intent intent = new Intent(this, Sad.class);
+		Intent intent = new Intent(this, Angry.class);
 		startActivity(intent);
 	}
 

@@ -5,13 +5,13 @@
 
 	<item
 		android:id="@+id/action_new"
-		android:icon="@drawable/ic_action_new"
+		android:icon="@drawable/plus_48px"
 		android:orderInCategory="1"
 		android:title="New"
 		app:showAsAction="always"/>
 	<item
 		android:id="@+id/action_profile"
-		android:icon="@drawable/profile_icon"
+		android:icon="@drawable/user"
 		android:orderInCategory="2"
 		android:title="@string/title_activity_my_account"
 		app:showAsAction="ifRoom"/>

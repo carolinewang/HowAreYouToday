@@ -12,5 +12,6 @@
     <color name="crying">#8E66FF</color>
     <color name="white">#FFFFFF</color>
     <color name="hint">#80FFFFFF</color>
+    <color name="partner_no_mood">#727272</color>
 
 </resources>

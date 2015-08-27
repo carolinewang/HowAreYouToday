@@ -22,7 +22,7 @@ public class LogIn extends ActionBarActivity {
 		EditText editText = (EditText) findViewById(R.id.name);
 		final String username = editText.getText().toString();
 		final String password = ((EditText) findViewById(R.id.password)).getText().toString();
-		ParseUser.logInInBackground(username, password, new LogInCallback() {
+		User.logInInBackground(username, password, new LogInCallback() {
 			@Override
 			public void done(ParseUser parseUser, com.parse.ParseException e) {
 				if (e == null) {

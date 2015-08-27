@@ -23,19 +23,19 @@ public class MyAccount extends ActionBarActivity {
 	protected void onResume() {
 		super.onResume();
 		ImageView profileImg = (ImageView) findViewById(R.id.profileImg);
-		ParseUser currentUser = ParseUser.getCurrentUser();
-		String gender = currentUser.getString("gender");
+		User currentUser = (User) ParseUser.getCurrentUser();
+		String gender = currentUser.getGender();
 		if (gender.equals("male")) {
 			profileImg.setImageResource(R.drawable.profile_default_male);
 		} else if (gender.equals("female")) {
 			profileImg.setImageResource(R.drawable.profile_default_female);
 		}
 		TextView username = (TextView) findViewById(R.id.username);
-		username.setText(currentUser.getString("username"));
+		username.setText(currentUser.getUsername());
 		TextView email = (TextView) findViewById(R.id.email);
-		email.setText(currentUser.getString("email"));
+		email.setText(currentUser.getEmail());
 		TextView partner = (TextView) findViewById((R.id.partner));
-		String partnerUser = currentUser.getString("partner");
+		String partnerUser = currentUser.getPartnerName();
 		if (partnerUser != null) {
 			partner.setText(partnerUser);
 		}
@@ -43,13 +43,13 @@ public class MyAccount extends ActionBarActivity {
 	}
 
 	public void goToMatchPage(View v) {
-		ParseUser currentUser = ParseUser.getCurrentUser();
-		String partner = currentUser.getString("partner");
+		User currentUser = (User) ParseUser.getCurrentUser();
+		User partner = currentUser.getPartner();
 		if (partner == null) {
 			Intent i = new Intent(this, MatchWithPartner.class);
 			startActivity(i);
 		} else {
-			Toast.makeText(MyAccount.this, "You have already matched with: " + partner + " !",
+			Toast.makeText(MyAccount.this, "You have already matched with: " + currentUser.getPartnerName() + " !",
 					Toast.LENGTH_SHORT).show();
 		}
 
