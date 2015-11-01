@@ -87,5 +87,12 @@
 		android:onClick="onRadioButtonClicked"
 		android:text="@string/gender_male"/>
 
-
+	<ProgressBar
+		android:id="@+id/progressBar"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_above="@+id/signUp"
+		android:layout_centerHorizontal="true"
+		android:layout_gravity="center_horizontal"
+		android:visibility="gone"/>
 </RelativeLayout>

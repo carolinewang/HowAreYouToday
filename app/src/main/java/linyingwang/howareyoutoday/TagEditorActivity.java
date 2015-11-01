@@ -29,6 +29,7 @@ public class TagEditorActivity extends ActionBarActivity {
 		}
 		ActionBar bar = getSupportActionBar();
 		switch (moodCategory) {
+
 			case 2:
 				bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.good)));
 				break;

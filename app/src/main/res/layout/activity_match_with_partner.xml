@@ -52,5 +52,14 @@
 		android:onClick="skipMatching"
 		android:text="@string/match_skip"
 		android:textColor="@color/ok"/>
+
+	<ProgressBar
+		android:id="@+id/progressBar"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/username"
+		android:layout_centerHorizontal="true"
+		android:visibility="gone"
+		/>
 </RelativeLayout>
 

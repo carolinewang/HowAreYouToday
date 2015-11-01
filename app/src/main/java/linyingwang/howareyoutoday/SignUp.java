@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
@@ -13,13 +14,14 @@ import com.parse.SignUpCallback;
 public class SignUp extends ActionBarActivity {
 	private RadioButton radioButtonMale;
 	private RadioButton radioButtonFemale;
-
+	private ProgressBar progressBar;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sign_up);
 		radioButtonMale = (RadioButton) findViewById(R.id.radiobutton_male);
 		radioButtonFemale = (RadioButton) findViewById(R.id.radiobutton_female);
+		progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
 	}
 
@@ -56,17 +58,21 @@ public class SignUp extends ActionBarActivity {
 			user.signUpInBackground(new SignUpCallback() {
 				@Override
 				public void done(com.parse.ParseException e) {
+					progressBar.setVisibility(View.GONE);
 					if (e == null) {
 						Toast.makeText(SignUp.this, R.string.toast_signup,
 								Toast.LENGTH_SHORT).show();
 						Toast.makeText(SignUp.this, R.string.toast_login, Toast.LENGTH_SHORT).show();
 						Intent intent = new Intent(SignUp.this, MatchWithPartner.class);
+						intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 						startActivity(intent);
+//						finish();
 					} else {
 						Toast.makeText(SignUp.this, e.toString(), Toast.LENGTH_SHORT).show();
 					}
 				}
 			});
+			progressBar.setVisibility(View.VISIBLE);
 		}
 
 	}

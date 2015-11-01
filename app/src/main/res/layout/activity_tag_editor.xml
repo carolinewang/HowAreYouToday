@@ -14,5 +14,7 @@
 	<me.gujun.android.taggroup.TagGroup
 		android:id="@+id/tag_group"
 		style="@style/TagGroup"
-		app:atg_isAppendMode="true"/>
+		app:atg_borderColor="@color/partner_no_mood"
+		app:atg_isAppendMode="true"
+		app:atg_textColor="@color/partner_no_mood"/>
 </LinearLayout>

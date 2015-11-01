@@ -29,6 +29,7 @@
         <activity
             android:name=".Welcome"
             android:label="@string/title_activity_welcome">
+
         </activity>
         <activity
             android:name=".LogIn"
@@ -51,36 +52,23 @@
         </activity>
         <activity
             android:name=".NewMood"
-            android:label="@string/title_activity_new_mood">
+            android:label="@string/title_activity_new_mood"
+            android:parentActivityName=".NewMood">
         </activity>
         <activity
-            android:name=".Sad"
-            android:label="@string/title_activity_sad">
+            android:name=".Mood"
+            android:label="@string/title_activity_mood"
+            android:parentActivityName=".MainActivity">
         </activity>
+
         <activity
             android:name=".TagEditorActivity"
             android:label="@string/title_activity_tag_editor">
         </activity>
-
         <activity
-            android:name=".Good"
-            android:label="@string/title_activity_good">
-        </activity>
-        <activity
-            android:name=".Happy"
-            android:label="@string/title_activity_happy">
-        </activity>
-        <activity
-            android:name=".OK"
-            android:label="@string/title_activity_ok">
-        </activity>
-        <activity
-            android:name=".Angry"
-            android:label="@string/title_activity_angry">
-        </activity>
-        <activity
-            android:name=".Crying"
-            android:label="@string/title_activity_crying">
+            android:name=".Settings"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".MainActivity">
         </activity>
     </application>
 

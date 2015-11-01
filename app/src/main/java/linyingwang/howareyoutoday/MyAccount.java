@@ -5,18 +5,23 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.LogOutCallback;
+import com.parse.ParseException;
 import com.parse.ParseUser;
 
 public class MyAccount extends ActionBarActivity {
 
+	private ProgressBar progressBar;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_my_account);
+		progressBar = (ProgressBar) findViewById(R.id.progressBar);
 	}
 
 	@Override
@@ -56,12 +61,18 @@ public class MyAccount extends ActionBarActivity {
 	}
 
 	public void logOut(View v) {
-		ParseUser.logOut();
-		ParseUser currentUser = ParseUser.getCurrentUser(); // this will now be null
-		if (currentUser == null) {
-			Toast.makeText(MyAccount.this, R.string.toast_logout, Toast.LENGTH_SHORT).show();
-			Intent intent = new Intent(MyAccount.this, Welcome.class);
-			startActivity(intent);
-		}
+		ParseUser.logOutInBackground(new LogOutCallback() {
+			@Override
+			public void done(ParseException e) {
+				progressBar.setVisibility(View.GONE);
+				if (e == null) {
+					Toast.makeText(MyAccount.this, R.string.toast_logout, Toast.LENGTH_SHORT).show();
+					Intent intent = new Intent(MyAccount.this, Welcome.class);
+					intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					startActivity(intent);
+				}
+			}
+		});
+		progressBar.setVisibility(View.VISIBLE);
 	}
 }

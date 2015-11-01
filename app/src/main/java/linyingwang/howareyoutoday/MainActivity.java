@@ -1,7 +1,10 @@
 package linyingwang.howareyoutoday;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,30 +13,26 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
-import com.parse.GetCallback;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.Locale;
 
 
 public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
 	private static final String TAG = MainActivity.class.getSimpleName();
-	protected static int moodCategory;
+	protected static int moodCategory = 0;
 	protected static String moodDescription;
 	protected static Date date;
 	protected static int ifWantComfort;
-	protected static ArrayList<String> tags;
+	protected static String[] tags;
 	protected static User currentUser;
+	protected static boolean isOnline;
 
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -54,7 +53,142 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		setUpTabs();
+	}
 
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.menu_main, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+
+		if (id == R.id.action_new) {
+			Intent intent = new Intent(this, NewMood.class);
+			startActivity(intent);
+			return true;
+		}
+
+		if (id == R.id.action_call) {
+			Intent i = new Intent(Intent.ACTION_DIAL);
+			i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+			if (i.resolveActivity(getPackageManager()) != null) {
+				startActivity(i);
+			}
+			return true;
+		}
+
+		if (id == R.id.action_profile) {
+			Intent i = new Intent(this, MyAccount.class);
+			startActivity(i);
+			return true;
+		}
+
+		if (id == R.id.action_settings) {
+			Intent i = new Intent(this, Settings.class);
+			startActivity(i);
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+		// When the given tab is selected, switch to the corresponding page in
+		// the ViewPager.
+		mViewPager.setCurrentItem(tab.getPosition());
+	}
+
+	@Override
+	public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+	}
+
+	@Override
+	public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+
+		if (isOnline()) {
+//			setUpTabs();
+			currentUser = (User) ParseUser.getCurrentUser();
+			if (currentUser != null) {
+//				getRecentMoodFromIntent();
+//				changeActionBarColor();
+//				queryRecentMoodFromParse();
+			} else {
+				Intent i = new Intent(this, Welcome.class);
+				startActivity(i);
+			}
+		} else {
+			Toast.makeText(MainActivity.this, R.string.toast_no_internet, Toast.LENGTH_LONG).show();
+		}
+
+	}
+
+	public void getRecentMoodFromIntent() {
+		Intent i = getIntent();
+		moodCategory = i.getIntExtra(Application.MOOD_CATEGORY, 0);
+		moodDescription = i.getStringExtra(Application.MOOD_DESCRIPTION);
+		long time = i.getLongExtra(Application.DATE, -1);
+		date = new Date();
+		date.setTime(time);
+		tags = i.getStringArrayExtra(Application.TAGCONTENTS);
+		ifWantComfort = i.getIntExtra(Application.COMFORT, 0);
+	}
+
+
+	public void changeActionBarColor() {
+		ActionBar bar = getSupportActionBar();
+
+		switch (moodCategory) {
+			case 2:
+				bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.good)));
+				bar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.good)));
+				break;
+			case 3:
+				bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.ok)));
+				bar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.ok)));
+				break;
+			case 4:
+				bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.sad)));
+				bar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.sad)));
+				break;
+			case 5:
+				bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.angry)));
+				bar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.angry)));
+				break;
+			case 6:
+				bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.crying)));
+				bar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.crying)));
+				break;
+		}
+	}
+
+	public void goToMatchPage(View v) {
+		Intent i = new Intent(this, MatchWithPartner.class);
+		startActivity(i);
+	}
+
+	public boolean isOnline() {
+		ConnectivityManager connMgr = (ConnectivityManager)
+				getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+		isOnline = networkInfo != null && networkInfo.isConnected();
+		return isOnline;
+	}
+
+	public void setUpTabs() {
 		// Set up the action bar.
 		final ActionBar actionBar = getSupportActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
@@ -88,152 +222,6 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 							.setText(mSectionsPagerAdapter.getPageTitle(i))
 							.setTabListener(this));
 		}
-
-	}
-
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.menu_main, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-
-		if (id == R.id.action_new) {
-			Intent intent = new Intent(this, NewMood.class);
-			startActivity(intent);
-			return true;
-		}
-
-		if (id == R.id.action_profile) {
-			Intent i = new Intent(this, MyAccount.class);
-			startActivity(i);
-			return true;
-		}
-
-		return super.onOptionsItemSelected(item);
-	}
-
-	@Override
-	public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-		// When the given tab is selected, switch to the corresponding page in
-		// the ViewPager.
-		mViewPager.setCurrentItem(tab.getPosition());
-	}
-
-	@Override
-	public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-	}
-
-	@Override
-	public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-	}
-
-	@Override
-	protected void onResume() {
-		super.onResume();
-
-		currentUser = (User) ParseUser.getCurrentUser();
-		if (currentUser != null) {
-			getRecentMoodFromIntent();
-			changeActionBarColor();
-			queryRecentMoodFromParse();
-//
-//			Log.d(TAG, "Intent" + moodCategory + moodDescription);
-//			changeActionBarColor();
-		} else {
-			// show the signup or login screen
-			Intent i = new Intent(this, Welcome.class);
-			startActivity(i);
-		}
-
-	}
-
-	public void getRecentMoodFromIntent() {
-		Intent i = getIntent();
-		moodCategory = i.getIntExtra(Application.MOOD_CATEGORY, 0);
-		moodDescription = i.getStringExtra(Application.MOOD_DESCRIPTION);
-		long time = i.getLongExtra(Application.DATE, -1);
-		date = new Date();
-		date.setTime(time);
-		tags = i.getStringArrayListExtra(Application.TAGCONTENTS);
-		ifWantComfort = i.getIntExtra(Application.COMFORT, 0);
-	}
-
-	public void queryRecentMoodFromParse() {
-		Calendar calStart = new GregorianCalendar();
-		calStart.setTime(new Date());
-		calStart.set(Calendar.HOUR_OF_DAY, 0);
-		calStart.set(Calendar.MINUTE, 0);
-		calStart.set(Calendar.SECOND, 0);
-		calStart.set(Calendar.MILLISECOND, 0);
-		Date midnightYesterday = calStart.getTime();
-
-		Calendar calEnd = new GregorianCalendar();
-		calEnd.setTime(new Date());
-		calEnd.set(Calendar.DAY_OF_YEAR, calEnd.get(Calendar.DAY_OF_YEAR) + 1);
-		calEnd.set(Calendar.HOUR_OF_DAY, 0);
-		calEnd.set(Calendar.MINUTE, 0);
-		calEnd.set(Calendar.SECOND, 0);
-		calEnd.set(Calendar.MILLISECOND, 0);
-		Date midnightTonight = calEnd.getTime();
-
-		ParseQuery<ParseObject> query = ParseQuery.getQuery("Mood");
-//		query.fromLocalDatastore();
-		query.whereEqualTo("user", MainActivity.currentUser);
-		query.whereGreaterThanOrEqualTo("createdAt", midnightYesterday);
-		query.whereLessThan("createdAt", midnightTonight);
-		query.orderByDescending("createdAt");
-		query.getFirstInBackground(new GetCallback<ParseObject>() {
-			@Override
-			public void done(ParseObject mood, com.parse.ParseException e) {
-				if (mood != null) {
-					moodCategory = mood.getInt("category");
-					moodDescription = mood.getString("description");
-					ifWantComfort = mood.getInt("ifWantComfort");
-					date = mood.getCreatedAt();
-					tags = (ArrayList<String>) mood.get("tags");
-					Log.d(TAG, "query" + moodCategory + moodDescription + date + tags);
-					changeActionBarColor();
-				} else {
-					Log.d("error", e.toString());
-				}
-			}
-		});
-	}
-
-	public void changeActionBarColor() {
-		ActionBar bar = getSupportActionBar();
-
-		switch (moodCategory) {
-			case 2:
-				bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.good)));
-				bar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.good)));
-				break;
-			case 3:
-				bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.ok)));
-				bar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.ok)));
-				break;
-			case 4:
-				bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.sad)));
-				bar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.sad)));
-				break;
-			case 5:
-				bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.angry)));
-				bar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.angry)));
-				break;
-			case 6:
-				bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.crying)));
-				bar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.crying)));
-				break;
-		}
 	}
 
 	/**
@@ -255,6 +243,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 					return new TodayFragment();
 				case 1:
 					return new HistoryFragment();
+				case 2:
+					return new HistoryPartnerFragment();
 				default:
 					return new TodayFragment();
 			}
@@ -263,7 +253,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 		@Override
 		public int getCount() {
 			// Show 3 total pages.
-			return 2;
+			return 3;
 		}
 
 		@Override
@@ -274,11 +264,11 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 					return getString(R.string.title_section1).toUpperCase(l);
 				case 1:
 					return getString(R.string.title_section2).toUpperCase(l);
+				case 2:
+					return getString(R.string.title_section3).toUpperCase(l);
 			}
 			return null;
 		}
 	}
-
-
 }
 
