@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<ListPreference
+		android:defaultValue="@string/pref_notification_type_default"
+		android:dialogTitle="@string/pref_notification_type_dialog_title"
+		android:entries="@array/pref_notification_type_entries"
+		android:entryValues="@array/pref_notification_type_entry_values"
+		android:key="pref_notificationType"
+		android:summary="@string/pref_notification_type_default"
+		android:title="@string/pref_notification_title"/>
+
+</PreferenceScreen>
