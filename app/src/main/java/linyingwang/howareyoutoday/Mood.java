@@ -20,8 +20,10 @@ import android.widget.Toast;
 import com.parse.ParseACL;
 import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParsePush;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+import com.parse.SendCallback;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -55,6 +57,8 @@ public class Mood extends Activity {
 	private int moodCategory;
 	private int ifWantComfort = 0;
 	private View root;
+	private boolean badMood;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -151,7 +155,7 @@ public class Mood extends Activity {
 		if (MainActivity.isOnline) {
 //		Toast.makeText(Sad.this, tags[1], Toast.LENGTH_SHORT).show();
 			ParseObject mood = new ParseObject("Mood");
-			User currentUser = (User) ParseUser.getCurrentUser();
+			final User currentUser = (User) ParseUser.getCurrentUser();
 //		String date = new SimpleDateFormat("HH:mm MM/dd/yyyy").format(new Date());
 			final Date date = new Date();
 			mood.put("category", moodCategory);
@@ -193,13 +197,25 @@ public class Mood extends Activity {
 					progressBar.setVisibility(View.GONE);
 					if (e == null) {
 						Toast.makeText(Mood.this, R.string.toast_record_mood, Toast.LENGTH_SHORT).show();
+
+						ParsePush.subscribeInBackground("Couple" + "_" + currentUser.getUsername());
+						ParsePush push = new ParsePush();
+						push.setChannel("Couple" + "_" + currentUser.getPartnerName());
+						if(badMood){
+							push.setMessage("Your partner is having a bad mood today. Check it out.");
+						}else{
+							push.setMessage("Your partner has just recorded a new mood for today. Check it out.");
+						}
+						push.sendInBackground();
+
 						Intent intent = new Intent(Mood.this, MainActivity.class);
-						intent.putExtra(Application.MOOD_CATEGORY, moodCategory);
-						intent.putExtra(Application.MOOD_DESCRIPTION, moodDescription.getText().toString());
-						intent.putExtra(Application.TAGCONTENTS, tags);
-						intent.putExtra(Application.DATE, date.getTime());
+//						intent.putExtra(Application.MOOD_CATEGORY, moodCategory);
+//						intent.putExtra(Application.MOOD_DESCRIPTION, moodDescription.getText().toString());
+//						intent.putExtra(Application.TAGCONTENTS, tags);
+//						intent.putExtra(Application.DATE, date.getTime());
 						intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 						startActivity(intent);
+
 //					finish();
 					} else {
 						Toast.makeText(Mood.this, e.toString(), Toast.LENGTH_SHORT).show();
@@ -256,6 +272,7 @@ public class Mood extends Activity {
 			RadioButton radioButtonComfort = (RadioButton) findViewById(R.id.radioButton_comfort);
 			radioButtonAlone.setVisibility(View.VISIBLE);
 			radioButtonComfort.setVisibility(View.VISIBLE);
+			badMood = true;
 		}
 	}
 

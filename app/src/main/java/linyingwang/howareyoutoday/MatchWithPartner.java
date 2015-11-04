@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.parse.FindCallback;
 import com.parse.ParseACL;
 import com.parse.ParseException;
+import com.parse.ParsePush;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
@@ -99,7 +100,7 @@ public class MatchWithPartner extends ActionBarActivity {
 													partner.getUsername(), Toast.LENGTH_SHORT).show();
 								}
 							});
-
+							ParsePush.subscribeInBackground("Couple" + "_" + currentUser.getUsername());
 							Intent intent = new Intent(MatchWithPartner.this, MainActivity.class);
 							intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 							startActivity(intent);

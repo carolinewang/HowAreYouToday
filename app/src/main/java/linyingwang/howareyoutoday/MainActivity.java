@@ -1,6 +1,8 @@
 package linyingwang.howareyoutoday;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
@@ -131,9 +133,20 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 				startActivity(i);
 			}
 		} else {
-			Toast.makeText(MainActivity.this, R.string.toast_no_internet, Toast.LENGTH_LONG).show();
+//			Toast.makeText(MainActivity.this, R.string.toast_no_internet, Toast.LENGTH_LONG).show();
+			showDialogWhenOffline();
 		}
 
+	}
+	public void showDialogWhenOffline(){
+		new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert).setTitle("No Internet Connection")
+				.setMessage("Oops, seems you are not connected to Internet. Please retry when you are connected.")
+				.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						onResume();
+					}
+				}).setNegativeButton("OK", null).show();
 	}
 
 	public void getRecentMoodFromIntent() {
@@ -147,33 +160,6 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 		ifWantComfort = i.getIntExtra(Application.COMFORT, 0);
 	}
 
-
-	public void changeActionBarColor() {
-		ActionBar bar = getSupportActionBar();
-
-		switch (moodCategory) {
-			case 2:
-				bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.good)));
-				bar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.good)));
-				break;
-			case 3:
-				bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.ok)));
-				bar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.ok)));
-				break;
-			case 4:
-				bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.sad)));
-				bar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.sad)));
-				break;
-			case 5:
-				bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.angry)));
-				bar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.angry)));
-				break;
-			case 6:
-				bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.crying)));
-				bar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.crying)));
-				break;
-		}
-	}
 
 	public void goToMatchPage(View v) {
 		Intent i = new Intent(this, MatchWithPartner.class);
