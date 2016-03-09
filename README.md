@@ -8,6 +8,8 @@
 <li>Or you simply want to record your own moods and keep track of them?</li>
 </ul>
 How Are You Today is an app designed to act as a mediator to solve these problems.
+# Download
+[Click here to download the App from Google Play Store](https://play.google.com/store/apps/details?id=linyingwang.howareyoutoday "Click here to download")
 # Features
 With a beautiful and simple UI, you can:
 <ul>
